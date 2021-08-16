@@ -1,9 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import adddata from '../components/content/addData';
-import homepage from '../components/content/homePage';
-import lookdata from '../components/content/lookData';
-import usedata from '../components/content/useData';
+import adddata from '../views/addData';
+import homepage from '../views/homePage';
+import lookdata from '../views/lookData';
+import usedata from '../views/useData';
 
 Vue.use(VueRouter);
 
@@ -13,8 +13,6 @@ const routes = [
   {path:'/homepage',component:homepage},
   {path:'/lookdata',component:lookdata},
   {path:'/usedata',component:usedata},
-
-  
 ];
 
 const router = new VueRouter({
