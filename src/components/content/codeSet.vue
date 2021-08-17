@@ -123,7 +123,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .report {
   text-align: left;
   margin-left: 10px;
@@ -140,7 +140,7 @@ export default {
   width: 100%;
 }
 .el-select {
-    top: 4px
+  top: 4px;
 }
 .orange {
   color: #f7b138;
