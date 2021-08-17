@@ -20,16 +20,18 @@
         <center-select></center-select>
       </el-tab-pane>
 
-      <el-tab-pane label="代码集" name="second"> 代码集 </el-tab-pane>
+      <el-tab-pane label="代码集" name="second"> <codeset></codeset> </el-tab-pane>
     </el-tabs>
   </div>
 </template>
 
 <script>
 import centerSelect from "./centerSelect.vue";
+import codeset from './codeSet.vue'
 export default {
   components: {
     centerSelect,
+    codeset
   },
   data() {
     return {
@@ -64,6 +66,9 @@ export default {
   /* width: 605px; */
   line-height: 34px;
   padding: 0 5px;
+}
+.el-select {
+    top: -4px
 }
 .report label {
   padding: 0, 5px;

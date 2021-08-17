@@ -344,15 +344,22 @@ export default {
   width: 10%;
 }
 .el-input__inner {
-    font-size: 12px!important;
+  font-size: 12px!important;
   border: none !important;
   padding-left: 0px !important;
   width: 97%;
   text-align: center;
+  position: relative;
+    top: 4px;
 }
 .selectbox {
-  border: solid 1px rgb(158, 155, 155);
+  box-sizing: border-box;
+  border: solid 1px rgb(211, 208, 208);
   width: 33%;
+  border-radius: 5px;
+  height: 42px;
+  /* padding: 5px 0; */
+  margin: 5px 0px;
   /* background-color: #fff!important; */
   /* padding-right: 5%; */
 }
