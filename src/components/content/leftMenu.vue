@@ -1,11 +1,15 @@
 <template>
   <div id="app">
-    <el-tree
-      :data="data"
-      :props="defaultProps"
-      @node-click="handleNodeClick"
-      :render-content="renderContent"
-    ></el-tree>
+    <div class="leftmenu">
+      <div class="title">业务系统</div>
+      <hr />
+      <el-tree
+        :data="data"
+        :props="defaultProps"
+        @node-click="handleNodeClick"
+        :render-content="renderContent"
+      ></el-tree>
+    </div>
   </div>
 </template>
 <script>
@@ -14,61 +18,44 @@ export default {
     return {
       data: [
         {
-          label: "一级 1",
+          label: "3685",
           children: [
             {
-              label: "二级 1-1",
+              label: "interface(http://127.0.0.18",
             },
             {
-              label: "二级 1-1",
+              label: "kafka-华为FI",
             },
             {
-              label: "二级 1-1",
+              label: "开源kafka-admin",
             },
             {
-              label: "二级 1-1",
+              label: "内置文件中心",
             },
           ],
         },
         {
-          label: "一级 2",
+          label: "测试服务系统",
           children: [
             {
-              label: "二级 2-1",
-              children: [
-                {
-                  label: "三级 2-1-1",
-                },
-              ],
+              label: "104",
             },
             {
-              label: "二级 2-2",
-              children: [
-                {
-                  label: "三级 2-2-1",
-                },
-              ],
+              label: "guass227db",
+            },
+            {
+              label: "mysql192",
             },
           ],
         },
         {
-          label: "一级 3",
+          label: "测试系统",
           children: [
             {
               label: "二级 3-1",
-              children: [
-                {
-                  label: "三级 3-1-1",
-                },
-              ],
             },
             {
               label: "二级 3-2",
-              children: [
-                {
-                  label: "三级 3-2-1",
-                },
-              ],
             },
           ],
         },
@@ -102,5 +89,14 @@ export default {
 }
 .el-menu-item.is-active {
   border-bottom-color: #409eff !important;
+}
+.title {
+  text-align: left;
+  padding: 0px, 10px;
+  padding-left: 15px;
+}
+.leftmenu {
+  height: 700px;
+  border: solid 1px #4e5052;
 }
 </style>

@@ -13,17 +13,17 @@
         <el-col :xs="8" :sm="6" :md="4" :lg="3" :xl="3"
           ><div class="grid-content bg-purple"></div
         ></el-col>
-        <el-col :xs="4" :sm="6" :md="8" :lg="5" :xl="5"
+        <el-col :xs="4" :sm="6" :md="8" :lg="4" :xl="4"
           ><div class="grid-content bg-purple-light">
             <leftmenu></leftmenu>
             </div
         ></el-col>
-        <el-col :xs="4" :sm="6" :md="8" :lg="12" :xl="12"
+        <el-col :xs="4" :sm="6" :md="8" :lg="14" :xl="14"
           ><div class="grid-content bg-purple-light">
             <contentmain></contentmain>
             </div
         ></el-col>
-        <el-col :xs="8" :sm="6" :md="4" :lg="4" :xl="4"
+        <el-col :xs="8" :sm="6" :md="4" :lg="3" :xl="3"
           ><div class="grid-content bg-purple"></div
         ></el-col>
       </el-row>
