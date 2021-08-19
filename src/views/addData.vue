@@ -14,14 +14,16 @@
         <!-- <el-col :xs="8" :sm="6" :md="4" :lg="3" :xl="3"
           ><div class="grid-content bg-purple"></div
         ></el-col> -->
-        <el-col :xs="4" :sm="6" :md="8" :lg="4" :xl="6"
-          ><div class="grid-content bg-purple-light">
-            <leftmenu></leftmenu></div
-        ></el-col>
-        <el-col :xs="4" :sm="6" :md="8" :lg="14" :xl="18"
-          ><div class="grid-content bg-purple-light">
-            <contentmain></contentmain></div
-        ></el-col>
+        <el-col :xs="4" :sm="6" :md="8" :lg="6" :xl="6">
+          <div class="grid-content bg-purple-light">
+            <leftmenu></leftmenu>
+          </div>
+        </el-col>
+        <el-col :xs="4" :sm="6" :md="8" :lg="18" :xl="18">
+          <div class="grid-content bg-purple-light">
+            <contentmain></contentmain>
+            </div>
+        </el-col>
         <!-- <el-col :xs="8" :sm="6" :md="4" :lg="3" :xl="3"
           ><div class="grid-content bg-purple"></div
         ></el-col> -->
@@ -67,7 +69,7 @@ export default {
   color: #409eff;
 }
 .maincontent {
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 .el-col {

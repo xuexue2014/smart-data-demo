@@ -17,7 +17,10 @@
             >个未对标
           </label>
         </div>
-        <center-select></center-select>
+        <!-- 资源列表搜索部分 -->
+        <resource-list></resource-list>
+        <!-- 数据包部分 -->
+        <dataset></dataset>
       </el-tab-pane>
 
       <el-tab-pane label="代码集" name="second">
@@ -28,12 +31,14 @@
 </template>
 
 <script>
-import centerSelect from "./centerSelect.vue";
+import resourceList from "./resourceList.vue";
 import codeset from "./codeSet.vue";
+import dataset from './dataSet.vue';
 export default {
   components: {
-    centerSelect,
+    resourceList,
     codeset,
+    dataset,
   },
   data() {
     return {

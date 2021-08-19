@@ -13,8 +13,7 @@
       </label>
     </div>
     <div class="selectbox wordkeys">
-      <span class="point">·</span>
-      <span class="">代码集名称</span>
+      <span class="point">代码集名称</span>
       <span class="space1">|</span>
       <el-select
         v-model="value"
@@ -124,23 +123,21 @@ export default {
 </script>
 
 <style scoped>
+.codeset {
+padding: 0 10px
+}
 .report {
   text-align: left;
-  margin-left: 10px;
-  margin-right: 10px;
   background-color: #dbe2ef;
-  height: 68px;
-  /* width: 605px; */
   line-height: 34px;
   padding: 0 5px;
 }
 .report label {
   padding: 0, 5px;
-  /* height: 50px; */
   width: 100%;
 }
 .el-select {
-  top: 4px;
+  margin-left: 10px;
 }
 .orange {
   color: #f7b138;

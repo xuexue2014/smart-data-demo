@@ -19,12 +19,40 @@
           </el-option>
         </el-select>
       </div>
+      <div class="selectbox wordkeys">
+        <span class="point">关键字</span>
+        <span class="space1">|</span>
+        <el-select
+          v-model="value"
+          multiple
+          filterable
+          remote
+          reserve-keyword
+          placeholder="请输入资源中文名、英文名"
+          :remote-method="remoteMethod"
+          :loading="loading"
+        >
+        //这个图标出不来
+          <span class="el-icon-search"></span>
+
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          >
+          </el-option>
+        </el-select>
+      </div>
     </div>
     <div class="packup">收起</div>
+
   </div>
 </template>
 
 <script>
+import hub from '../../eventBus'
+
 export default {
   data() {
     return {
@@ -232,6 +260,12 @@ export default {
     this.list = this.states.map((item) => {
       return { value: `value:${item}`, label: `label:${item}` };
     });
+    hub.$on('menuname',(val)=>{
+      // 兄弟组件接受值
+      console.log('22'+this.bussystem[2].label);
+      this.bussystem[2].labe = val
+       
+    })
   },
   methods: {
     remoteMethod(query) {
@@ -288,13 +322,19 @@ export default {
   text-align: center;
   position: relative;
   top: 4px;
+  height: 26px !important;
+}
+
+.el-input__prefix,
+.el-input__suffix {
+  top: 7px !important;
 }
 .selectbox {
   box-sizing: border-box;
   border: solid 1px rgb(211, 208, 208);
   width: 28%;
   border-radius: 5px;
-  height: 42px;
+  height: 30px;
   /* padding: 5px 0; */
   text-align: left;
   margin: 5px 0px;
