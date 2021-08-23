@@ -14,12 +14,12 @@
         <!-- <el-col :xs="8" :sm="6" :md="4" :lg="3" :xl="3"
           ><div class="grid-content bg-purple"></div
         ></el-col> -->
-        <el-col :xs="4" :sm="6" :md="8" :lg="6" :xl="6">
+        <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">
           <div class="grid-content bg-purple-light">
             <leftmenu></leftmenu>
           </div>
         </el-col>
-        <el-col :xs="4" :sm="6" :md="8" :lg="18" :xl="18">
+        <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18">
           <div class="grid-content bg-purple-light">
             <contentmain></contentmain>
             </div>

@@ -1,18 +1,18 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import state from './state';
+import getters from './getters';
+import actions from './actions';
+import mutations from './mutations'
+import modules from './modules'
 
 Vue.use(Vuex);
-
+console.log('gettter',getters)
 export default new Vuex.Store({
-  state: {
-    count:0
-  },
-  mutations: {
-    increment(state,v){
-      state.count+=v
-    }
-  },
-  actions: {},
-  modules: {},
+state,
+getters,
+actions,
+modules,
+mutations
 });
 

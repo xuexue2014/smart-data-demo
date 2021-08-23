@@ -1,0 +1,100 @@
+{
+  "id": "2760065",
+  "name": "smart-demo",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "774432",
+      "name": "垃圾",
+      "font_class": "laji",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "5016977",
+      "name": "更多",
+      "font_class": "gengduo",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "6539845",
+      "name": "发送",
+      "font_class": "fasong",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "16530779",
+      "name": "配置管理",
+      "font_class": "peizhiguanli",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "17275521",
+      "name": "代码",
+      "font_class": "daima2",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "18538439",
+      "name": "变更",
+      "font_class": "biangeng",
+      "unicode": "efac",
+      "unicode_decimal": 61356
+    },
+    {
+      "icon_id": "18819473",
+      "name": "导入",
+      "font_class": "daoru",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "20079330",
+      "name": "映射",
+      "font_class": "yingshe",
+      "unicode": "e790",
+      "unicode_decimal": 59280
+    },
+    {
+      "icon_id": "20231417",
+      "name": "导出",
+      "font_class": "daochu",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "21585658",
+      "name": "更  多 (1)",
+      "font_class": "gengduo1",
+      "unicode": "e6f0",
+      "unicode_decimal": 59120
+    },
+    {
+      "icon_id": "22262826",
+      "name": "新增",
+      "font_class": "zengjiatianjiaxinzenggengduo",
+      "unicode": "e676",
+      "unicode_decimal": 58998
+    },
+    {
+      "icon_id": "22726595",
+      "name": "物理",
+      "font_class": "wuli",
+      "unicode": "ea05",
+      "unicode_decimal": 59909
+    },
+    {
+      "icon_id": "22855387",
+      "name": "下载-",
+      "font_class": "xiazai-",
+      "unicode": "e633",
+      "unicode_decimal": 58931
+    }
+  ]
+}

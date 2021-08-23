@@ -3,18 +3,29 @@
     <div class="selectCenter">
       <div
         class="selectbox"
-        v-for="key in Object.keys(selectObj)"
-        :key="key"
-        :class="key"
+        v-for="item in selectObj"
+        :key="item.key"
+        :class="item.key"
       >
-        <span class="point">{{ selectObj[key].name }}</span>
+        <!-- <span>{{111-Object.keys(selectObj)}}</span> -->
+        <span class="point">{{ item.name }}</span>
+        <!-- <span class="point">{{ item.data}}</span> -->
+
         <span class="space1">|</span>
-        <el-select v-model="value" placeholder="请选择">
+
+        <el-select
+          v-model="selectedValue[item.key]"
+          placeholder="请选择"
+          :disabled="item.disabled"
+          @change="handechenge"
+        >
+
           <el-option
-            v-for="item in selectObj[key].data"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
+            v-for="it in item.data"
+            :key="it && it.value"
+            :label="it ? it.label : 'llll'"
+            :value="it && (it.value || it.label)"
+        
           >
           </el-option>
         </el-select>
@@ -32,53 +43,94 @@
           :remote-method="remoteMethod"
           :loading="loading"
         >
-        //这个图标出不来
+          <!-- 这个图标出不来 -->
           <span class="el-icon-search"></span>
 
-          <el-option
+          <!-- <el-option
             v-for="item in options"
             :key="item.value"
             :label="item.label"
             :value="item.value"
           >
-          </el-option>
+          </el-option> -->
         </el-select>
       </div>
     </div>
     <div class="packup">收起</div>
-
   </div>
 </template>
 
 <script>
-import hub from '../../eventBus'
-
+import { mapState, mapGetters } from "vuex";
+import { tableData } from './mockData'
 export default {
   data() {
+    const selectedItem =  this.$store.getters.selectedItem;
     return {
       //   此处需要拿到【业务系统】子菜单的名称
-      selectObj: {
-        bussystem: {
-          name: "业务系统",
-          data: [
-            {
-              value: "选项1",
-              label: "此处应该传【业务系统】的值",
-            },
-          ],
-        },
-        //   此处需要拿到【业务系统】子菜单下的值
-        datasouse: {
+
+      //   关键字 （用了【远程搜索】组件，的数据样式
+      options: [],
+      tableData: tableData,
+      selectedValue: {
+
+        bussystem: selectedItem && selectedItem.value,
+        // datasouse: "",
+        // effectState: "",
+        // approvalState: "",
+        // usestype: "",
+        // dataget: "",
+        // dataup: "",
+      },
+      value: [],
+      list: [],
+      loading: false,
+      states: ["Alabama", "Alaska", "Arizona"],
+    };
+  },
+  mounted() {
+    this.list = this.states.map((item) => {
+      return { value: `value:${item}`, label: `label:${item}` };
+    });
+    this.selectObj[0].data = this.leftMenuData;
+  },
+  watch: {
+    selectedItem(item){
+      debugger
+      this.selectedValue.bussystem = item && item.value;
+     }
+  },
+  computed: {
+    ...mapState(["count", "leftMenuData"]),
+    // ...mapMutation(['count'])
+    ...mapGetters(['selectedItem']),
+    selectObj(){
+      const selectedItem =  this.$store.getters.selectedItem;
+      const bussystemData = [];
+
+      if(selectedItem){
+        bussystemData.push(selectedItem);
+      }
+      console.log('-----',selectedItem)
+      return  [
+        { key: "bussystem", 
+        name: "业务系统", 
+        // disabled: true, 
+        data: bussystemData,
+        disabled: true
+        }, 
+        {
+          key: "datasouse",
           name: "数据源",
           data: [
             {
               value: "选项1",
               label: "已停用",
-            },
-            {},
+            }
           ],
         },
-        effectState: {
+        {
+          key: "effectState",
           name: "有效性状态",
           data: [
             {
@@ -103,7 +155,8 @@ export default {
             },
           ],
         },
-        approvalState: {
+        {
+          key: "approvalState",
           name: "最新审核状态",
           data: [
             {
@@ -124,7 +177,8 @@ export default {
             },
           ],
         },
-        usestype: {
+        {
+          key: "usestype",
           name: "用途类型",
           data: [
             {
@@ -149,7 +203,8 @@ export default {
             },
           ],
         },
-        dataget: {
+        {
+          key: "dataget",
           name: "数据获取方式",
           data: [
             {
@@ -174,7 +229,8 @@ export default {
             },
           ],
         },
-        dataup: {
+        {
+          key: "dataup",
           name: "数据更新周期",
           data: [
             {
@@ -195,79 +251,15 @@ export default {
             },
           ],
         },
-      },
-
-      //   关键字 （用了【远程搜索】组件，的数据样式
-      options: [],
-      value: [],
-      list: [],
-      loading: false,
-      states: [
-        "Alabama",
-        "Alaska",
-        "Arizona",
-        "Arkansas",
-        "California",
-        "Colorado",
-        "Connecticut",
-        "Delaware",
-        "Florida",
-        "Georgia",
-        "Hawaii",
-        "Idaho",
-        "Illinois",
-        "Indiana",
-        "Iowa",
-        "Kansas",
-        "Kentucky",
-        "Louisiana",
-        "Maine",
-        "Maryland",
-        "Massachusetts",
-        "Michigan",
-        "Minnesota",
-        "Mississippi",
-        "Missouri",
-        "Montana",
-        "Nebraska",
-        "Nevada",
-        "New Hampshire",
-        "New Jersey",
-        "New Mexico",
-        "New York",
-        "North Carolina",
-        "North Dakota",
-        "Ohio",
-        "Oklahoma",
-        "Oregon",
-        "Pennsylvania",
-        "Rhode Island",
-        "South Carolina",
-        "South Dakota",
-        "Tennessee",
-        "Texas",
-        "Utah",
-        "Vermont",
-        "Virginia",
-        "Washington",
-        "West Virginia",
-        "Wisconsin",
-        "Wyoming",
-      ],
-    };
-  },
-  mounted() {
-    this.list = this.states.map((item) => {
-      return { value: `value:${item}`, label: `label:${item}` };
-    });
-    hub.$on('menuname',(val)=>{
-      // 兄弟组件接受值
-      console.log('22'+this.bussystem[2].label);
-      this.bussystem[2].labe = val
-       
-    })
+      ]
+    }
+   
   },
   methods: {
+    handechenge() {
+      console.log(this.selectedValue);
+      // console.log(selectedValue[item.key]);
+    },
     remoteMethod(query) {
       if (query !== "") {
         this.loading = true;
@@ -282,6 +274,11 @@ export default {
       }
     },
   },
+  // watch:{
+  //   slectedItem:function(){
+  //     this.selectObj[0].data= this.slectedItem;
+  //   }
+  // }
 };
 </script>
 

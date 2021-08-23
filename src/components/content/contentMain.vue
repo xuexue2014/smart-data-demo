@@ -19,7 +19,11 @@
         </div>
         <!-- 资源列表搜索部分 -->
         <resource-list></resource-list>
-        <!-- 数据包部分 -->
+        
+        <!-- 数据包管理头 -->
+        <data-set-manage></data-set-manage>
+        
+          <!-- 数据包布局 -->
         <dataset></dataset>
       </el-tab-pane>
 
@@ -34,11 +38,13 @@
 import resourceList from "./resourceList.vue";
 import codeset from "./codeSet.vue";
 import dataset from './dataSet.vue';
+import dataSetManage from './dataSetManage.vue'
 export default {
   components: {
     resourceList,
     codeset,
     dataset,
+    dataSetManage 
   },
   data() {
     return {
