@@ -1,7 +1,9 @@
 export default {
     count: '',
     busSystemName: '',
+    // 左边菜单被选中的value 值存储
     selectedKey: "选项1",
+    // 中间上面下拉框被选中的value 值存在这
     selectedOptions:{},
     leftMenuData: [
         {
@@ -21,7 +23,7 @@ export default {
                     label: "开源kafka-admin",
                 },
                 {
-                    value: '1-3',
+                    value: '1-4',
                     label: "内置文件中心",
                 },
             ],

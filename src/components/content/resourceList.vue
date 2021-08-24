@@ -15,6 +15,7 @@
 
         <el-select
           v-model="selectedValue[item.key]"
+          clearable
           placeholder="请选择"
           :disabled="item.disabled"
           @change="handlechange"
@@ -75,12 +76,12 @@ export default {
       selectedValue: {
 
         bussystem: selectedItem && selectedItem.value,
-        // datasouse: "",
-        // effectState: "",
-        // approvalState: "",
-        // usestype: "",
-        // dataget: "",
-        // dataup: "",
+        datasouse: "",
+        effectState: "",
+        approvalState: "",
+        usestype: "",
+        dataget: "",
+        dataup: "",
       },
       value: [],
       list: [],
@@ -146,11 +147,11 @@ export default {
               label: "停用中",
             },
             {
-              value: "选项4",
+              value: "启用中",
               label: "启用中",
             },
             {
-              value: "选项5",
+              value: "草稿",
               label: "草稿",
             },
           ],
@@ -160,19 +161,19 @@ export default {
           name: "最新审核状态",
           data: [
             {
-              value: "选项1",
+              value: "审核不通过",
               label: "审核不通过",
             },
             {
-              value: "选项2",
+              value: "审核通过",
               label: "审核通过",
             },
             {
-              value: "选项3",
+              value: "审核中",
               label: "审核中",
             },
             {
-              value: "选项4",
+              value: "待送审",
               label: "待送审",
             },
           ],
@@ -182,23 +183,23 @@ export default {
           name: "用途类型",
           data: [
             {
-              value: "选项1",
+              value: "业务表",
               label: "业务表",
             },
             {
-              value: "选项2",
+              value: "其他表",
               label: "其他表",
             },
             {
-              value: "选项3",
+              value: "字典表",
               label: "字典表",
             },
             {
-              value: "选项4",
+              value: "日志表",
               label: "日志表",
             },
             {
-              value: "选项5",
+              value: "关联表",
               label: "关联表",
             },
           ],
@@ -208,23 +209,23 @@ export default {
           name: "数据获取方式",
           data: [
             {
-              value: "选项1",
+              value: "自建系统录入",
               label: "自建系统录入",
             },
             {
-              value: "选项2",
+              value: "交易平台",
               label: "交易平台",
             },
             {
-              value: "选项3",
+              value: "爬虫爬取",
               label: "爬虫爬取",
             },
             {
-              value: "选项4",
+              value: "公开数据库",
               label: "公开数据库",
             },
             {
-              value: "选项5",
+              value: "网络采集",
               label: "网络采集",
             },
           ],
@@ -234,19 +235,19 @@ export default {
           name: "数据更新周期",
           data: [
             {
-              value: "选项1",
+              value: "每年",
               label: "每年",
             },
             {
-              value: "选项2",
+              value: "每月",
               label: "每月",
             },
             {
-              value: "选项3",
+              value: "每周",
               label: "每周",
             },
             {
-              value: "选项4",
+              value: "每日",
               label: "每日",
             },
           ],

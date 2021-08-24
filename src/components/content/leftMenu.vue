@@ -9,10 +9,10 @@
         @node-click="handleNodeClick"
         :render-content="renderContent"
         :current-node-key="selectedKey"
-        highlight-current="true"
+       
         node-key="value"
       ></el-tree>
-   
+    <!-- highlightCurrent="true" -->
     </div>
   </div>
 </template>

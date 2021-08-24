@@ -2,7 +2,7 @@
   <div class="codeSetDataset">
     <div class="datalist">
       <el-descriptions
-        v-for="item in tableData"
+        v-for="item in newTableData"
         :key="item.key"
         :column="5"
         :colon="false"
@@ -19,9 +19,8 @@
 
         <el-descriptions-item class="empty"></el-descriptions-item>
         <!-- <div labelStyle>11</div> -->
-        <el-descriptions-item label="用途分类:">{{
-          item.name
-        }}</el-descriptions-item>
+        <el-descriptions-item label="用途分类:">
+          {{item.usestype}}</el-descriptions-item>
         <el-descriptions-item label="有效性状态:">{{
           item.effectType
         }}</el-descriptions-item>
@@ -46,8 +45,9 @@
         >
        
       </el-descriptions>
-       1111{{JSON.stringify(selectedOptions)}}
-       1111{{selectedOptions}}
+      <!-- 2222{{JSON.stringify(selectedOptions)}}  -->
+       <!-- 3333{{selectedOptions}} -->
+       <!-- 11111{{newTableData}} --> 
     </div>
     
   </div>
@@ -62,10 +62,24 @@ export default {
   data() {
     return {
       tableData: tableData,
+      // selectedOptions1:JSON.stringify(selectedOptions),
     };
   },
   computed:{
      ...mapState(["selectedOptions"]),
+     newTableData(){
+      //  var isMatch=[];
+/* includes(this.selectedOptions.usestype),
+这个selectedOptions.usestype可以是空的，但是不能不存在，
+因此需要提前给selectedOptions里面设置属性，对应的值为空即可 */
+        return  this.tableData.filter(v =>{
+        return v.usestype.includes(this.selectedOptions.usestype)
+        && v.reviewstate.includes(this.selectedOptions.approvalState)
+        &&v.effectType.includes(this.selectedOptions.effectState) ;
+      
+       })
+        
+     }
   }
 };
 </script>
