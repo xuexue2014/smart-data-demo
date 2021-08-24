@@ -17,7 +17,7 @@
           v-model="selectedValue[item.key]"
           placeholder="请选择"
           :disabled="item.disabled"
-          @change="handechenge"
+          @change="handlechange"
         >
 
           <el-option
@@ -96,7 +96,7 @@ export default {
   },
   watch: {
     selectedItem(item){
-      debugger
+      // debugger
       this.selectedValue.bussystem = item && item.value;
      }
   },
@@ -124,7 +124,7 @@ export default {
           name: "数据源",
           data: [
             {
-              value: "选项1",
+              value: "已停用",
               label: "已停用",
             }
           ],
@@ -134,15 +134,15 @@ export default {
           name: "有效性状态",
           data: [
             {
-              value: "选项1",
+              value: "已停用",
               label: "已停用",
             },
             {
-              value: "选项2",
+              value: "已启用",
               label: "已启用",
             },
             {
-              value: "选项3",
+              value: "停用中",
               label: "停用中",
             },
             {
@@ -256,9 +256,12 @@ export default {
    
   },
   methods: {
-    handechenge() {
+    handlechange() {
       console.log(this.selectedValue);
+      this.$store.commit('setSelectedOptions',this.selectedValue)
       // console.log(selectedValue[item.key]);
+
+
     },
     remoteMethod(query) {
       if (query !== "") {

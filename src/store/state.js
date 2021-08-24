@@ -1,7 +1,8 @@
 export default {
     count: '',
     busSystemName: '',
-    selectedKey: "选项3",
+    selectedKey: "选项1",
+    selectedOptions:{},
     leftMenuData: [
         {
             value: "选项1",
