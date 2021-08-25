@@ -77,10 +77,13 @@ export default {
       selectedValue: {
      /*    为啥要用这种方式？？？  一个对象和一个值 与  得到什么？
         bussystem: selectedItem && selectedItem.value, */
+        // 这行代码的作用就是让初始值显示到【业务系统】里
+        
         bussystem:  selectedItem.value,
         // datasouse: selectedDataSource.label,
+        // datasouse: selectedDataSource && selectedDataSource.value,
         datasouse:"",
-        effectState: selectedDataSource && selectedDataSource.value,
+        effectState:"",
         approvalState: "",
         usestype: "",
         dataget: "",
