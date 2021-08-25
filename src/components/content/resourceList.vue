@@ -20,13 +20,11 @@
           :disabled="item.disabled"
           @change="handlechange"
         >
-
           <el-option
             v-for="it in item.data"
             :key="it && it.value"
             :label="it ? it.label : 'llll'"
             :value="it && (it.value || it.label)"
-        
           >
           </el-option>
         </el-select>
@@ -63,27 +61,29 @@
 
 <script>
 import { mapState, mapGetters } from "vuex";
-import { tableData } from './mockData'
+import { tableData } from "./mockData";
 export default {
   data() {
-    const selectedItem =  this.$store.getters.selectedItem;
-    const selectedDataSource =  this.$store.getters.selectedDataSource;
+    const selectedDataSource = this.$store.getters.selectedDataSource;
+
+    const selectedItem = this.$store.getters.selectedItem;
+
+    console.log(selectedDataSource);
 
     return {
-
       //   关键字 （用了【远程搜索】组件，的数据样式
       options: [],
       tableData: tableData,
       selectedValue: {
-     /*    为啥要用这种方式？？？  一个对象和一个值 与  得到什么？
-        bussystem: selectedItem && selectedItem.value, */
+        /*    为啥要用这种方式？？？  一个对象和一个值 与  得到什么？ */
+        bussystem: selectedItem && selectedItem.value,
         // 这行代码的作用就是让初始值显示到【业务系统】里
-        
-        bussystem:  selectedItem.value,
-        // datasouse: selectedDataSource.label,
-        // datasouse: selectedDataSource && selectedDataSource.value,
-        datasouse:"",
-        effectState:"",
+
+        // bussystem:  this?.selectedItem?.value,
+        datasourse: "",
+        // datasourse: selectedDataSource && selectedDataSource.value,
+        // datasourse:" ",
+        effectState: "",
         approvalState: "",
         usestype: "",
         dataget: "",
@@ -102,42 +102,50 @@ export default {
     this.selectObj[0].data = this.leftMenuData;
   },
   watch: {
-    selectedItem(item){
-      // debugger
+    selectedItem(item) {
+      // debugger;
       this.selectedValue.bussystem = item && item.value;
-     }
+    },
+    selectedDataSource(item) {
+      if (item?.length === 1) {
+        this.selectedValue.datasourse = item[0].value;
+      } else {
+        this.selectedValue.datasourse = "";
+      }
+    },
   },
   computed: {
     ...mapState(["count", "leftMenuData"]),
     // ...mapMutation(['count'])
-    ...mapGetters(['selectedItem','selectedDataSource']),
-    selectObj(){
-
+    ...mapGetters(["selectedItem", "selectedDataSource"]),
+    selectObj() {
       // 取值给bussystemData
-      const selectedItem =  this.$store.getters.selectedItem;
+      const selectedItem = this.$store.getters.selectedItem;
       const bussystemData = [];
-      if(selectedItem){
+      // 把对象放到数组里
+      if (selectedItem) {
         bussystemData.push(selectedItem);
       }
 
       // 取值给datasouseData
-      const selectedDataSource =  this.$store.getters.selectedDataSource;
-      const datasouseData = [];
-      if(selectedDataSource){
-        datasouseData.push(selectedDataSource);
+      const selectedDataSource = this.$store.getters.selectedDataSource;
+      const datasourseData = [];
+      if (selectedDataSource) {
+        datasourseData.push(...selectedDataSource);
       }
-      console.log('-----',selectedItem)
-      return  [
-        { key: "bussystem", 
-        name: "业务系统", 
-        // disabled: true, 
-        data: bussystemData,
-        disabled: true
-        }, 
+      // console.log('-----',selectedItem)
+      return [
         {
-          key: "datasouse",
+          key: "bussystem",
+          name: "业务系统",
+          // disabled: true,
+          data: bussystemData,
+          disabled: true,
+        },
+        {
+          key: "datasourse",
           name: "数据源",
-          data: datasouseData,
+          data: datasourseData,
         },
         {
           key: "effectState",
@@ -261,17 +269,14 @@ export default {
             },
           ],
         },
-      ]
-    }
-   
+      ];
+    },
   },
   methods: {
     handlechange() {
       console.log(this.selectedValue);
-      this.$store.commit('setSelectedOptions',this.selectedValue)
+      this.$store.commit("setSelectedOptions", this.selectedValue);
       // console.log(selectedValue[item.key]);
-
-
     },
     remoteMethod(query) {
       if (query !== "") {

@@ -24,11 +24,13 @@ export default {
     //   aaaa(){return '1'}
     selectedDataSource(state) {
         const { selectedKey, leftMenuData } = state;
-        let result = null;
+        // let result = null;  等于null和等于[]有区别吗
+        let result = [ ];
         for (let index = 0; index < leftMenuData.length; index++) {
             const item = leftMenuData[index];
             if (item.value === selectedKey) {
-                result = item.children
+                result = item.children;
+                break
                 // 将数组转换对对象
                /*  item.children.reduce((acc,value) =>{
                     return result = {...acc,...value}
@@ -38,7 +40,8 @@ export default {
                 for (let index = 0; index < item.children.length; index++) {
                     const child = item.children[index];
                     if (child.value === selectedKey) {
-                        result = item.children[index];
+                        result = [item.children[index]];
+                        break
                     }
                 }
             }
