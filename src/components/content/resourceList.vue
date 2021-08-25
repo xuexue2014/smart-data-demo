@@ -67,17 +67,20 @@ import { tableData } from './mockData'
 export default {
   data() {
     const selectedItem =  this.$store.getters.selectedItem;
+    const selectedDataSource =  this.$store.getters.selectedDataSource;
+
     return {
-      //   此处需要拿到【业务系统】子菜单的名称
 
       //   关键字 （用了【远程搜索】组件，的数据样式
       options: [],
       tableData: tableData,
       selectedValue: {
-
-        bussystem: selectedItem && selectedItem.value,
-        datasouse: "",
-        effectState: "",
+     /*    为啥要用这种方式？？？  一个对象和一个值 与  得到什么？
+        bussystem: selectedItem && selectedItem.value, */
+        bussystem:  selectedItem.value,
+        // datasouse: selectedDataSource.label,
+        datasouse:"",
+        effectState: selectedDataSource && selectedDataSource.value,
         approvalState: "",
         usestype: "",
         dataget: "",
@@ -104,13 +107,21 @@ export default {
   computed: {
     ...mapState(["count", "leftMenuData"]),
     // ...mapMutation(['count'])
-    ...mapGetters(['selectedItem']),
+    ...mapGetters(['selectedItem','selectedDataSource']),
     selectObj(){
+
+      // 取值给bussystemData
       const selectedItem =  this.$store.getters.selectedItem;
       const bussystemData = [];
-
       if(selectedItem){
         bussystemData.push(selectedItem);
+      }
+
+      // 取值给datasouseData
+      const selectedDataSource =  this.$store.getters.selectedDataSource;
+      const datasouseData = [];
+      if(selectedDataSource){
+        datasouseData.push(selectedDataSource);
       }
       console.log('-----',selectedItem)
       return  [
@@ -123,12 +134,7 @@ export default {
         {
           key: "datasouse",
           name: "数据源",
-          data: [
-            {
-              value: "已停用",
-              label: "已停用",
-            }
-          ],
+          data: datasouseData,
         },
         {
           key: "effectState",

@@ -1,10 +1,8 @@
 // import state from "./state";
 
 export default {
-    // increment(state,){
-    //     state.count = v
-    //   }
     setValue(state, payload){
+//   把当前点击的元素的value值赋值给selectedkey
         // debugger
         const { name, value } = payload;
         if(name){

@@ -37,8 +37,8 @@
 <script>
 import resourceList from "./resourceList.vue";
 import codeset from "./codeSet.vue";
-import dataset from "./dataSet.vue"
-import dataSetManage from './dataSetManage.vue'
+import dataset from "./dataSet";
+import dataSetManage from './dataSetManage'
 export default {
   components: {
     resourceList,
