@@ -1,67 +1,90 @@
 <template>
   <div class="navMain">
     <el-row type="flex" class="row-bg" justify="space-between">
-      <el-col :span="6">
+      <el-col :span="8">
         <div class="grid-content bg-purple">
           <img src="../../assets/logo.png" />
           <h4 class="logo">智能数据运营平台</h4>
         </div></el-col
       >
-      <el-col :span="12">
-        <div class="grid-content bg-purple-light">
-          <el-menu
-            :default-active="activeIndex2"
-            class="el-menu-demo"
-            mode="horizontal"
-            @select="handleSelect"
-            background-color="#545c64"
-            text-color="#fff"
-            active-text-color="#ffd04b"
+      <el-col :span="8">
+        <el-row type="flex" class="row-bg" justify="space-between">
+          <el-col
+            :span="24 / navData.length"
+            class="grid-content bg-purple-light"
+            v-for="item in navData"
+            :key="item.url"
           >
-            <el-menu-item index="1">
-              <router-link to="/homepage">首页 </router-link>
-            </el-menu-item>
+            <el-menu
+              :default-active="activeIndex2"
+              class="el-menu-demo"
+              mode="horizontal"
+              @select="handleSelect"
+              background-color="#545c64"
+              text-color="#fff"
+              active-text-color="#ffd04b"
+              unique-opened
+            >
+              <el-menu-item index="1" v-if="!item.children">
+                <router-link :to="item.url">{{ item.label }} </router-link>
+              </el-menu-item>
 
-            <el-submenu index="2">
-              <template slot="title">录数据</template>
-
-              <el-menu-item index="2-1"
-                ><router-link to="/adddata">数据报送</router-link></el-menu-item
+              <el-submenu :index="item.url" v-else>
+                <template slot="title">
+                  {{ item.label }}
+                </template>
+                <el-menu-item
+                  :index="it.key"
+                  v-for="it in item.children"
+                  :key="it.key"
+                  :class="it.key"
+                >
+                  <router-link :to="it.url">
+                    {{ it.label }}
+                  </router-link>
+                </el-menu-item> </el-submenu
               >
-              <el-menu-item index="2-2"
-                ><router-link to="/adddata">资源注册</router-link></el-menu-item
-              >
-              <el-menu-item index="2-3"
-                ><router-link to="/adddata">系统注册</router-link></el-menu-item
-              >
-              <el-menu-item index="2-3"
-                ><router-link to="/adddata">数据需求</router-link></el-menu-item
-              >
-              <!-- <el-submenu index="2-4">
+            </el-menu>
+          </el-col>
+        </el-row>
+      </el-col>
+      <!--  <el-menu-item index="2-2"
+                  ><router-link to="/adddata"
+                    >资源注册</router-link
+                  ></el-menu-item
+                >
+                <el-menu-item index="2-3"
+                  ><router-link to="/adddata"
+                    >系统注册</router-link
+                  ></el-menu-item
+                >
+                <el-menu-item index="2-3"
+                  ><router-link to="/adddata"
+                    >数据需求</router-link
+                  ></el-menu-item
+                > -->
+      <!-- <el-submenu index="2-4">
                   <template slot="title">选项4</template>
                   <el-menu-item index="2-4-1">选项1</el-menu-item>
                   <el-menu-item index="2-4-2">选项2</el-menu-item>
                   <el-menu-item index="2-4-3">选项3</el-menu-item>
                 </el-submenu> -->
-            </el-submenu>
 
-            <el-submenu index="3">
-              <template slot="title">
-                <router-link to="usedata">用数据 </router-link></template
-              >
-              <el-menu-item index="3-1">数据超市</el-menu-item>
-              <el-menu-item index="3-2">标签画像</el-menu-item>
-              <el-menu-item index="3-2">数据检索</el-menu-item>
-              <el-menu-item index="3-2">标签洞察</el-menu-item>
-            </el-submenu>
+      <!--   <el-submenu index="3">
+                <template slot="title">
+                  <router-link to="usedata">用数据 </router-link></template
+                >
+                <el-menu-item index="3-1">数据超市</el-menu-item>
+                <el-menu-item index="3-2">标签画像</el-menu-item>
+                <el-menu-item index="3-2">数据检索</el-menu-item>
+                <el-menu-item index="3-2">标签洞察</el-menu-item>
+              </el-submenu> -->
+      <!-- 
+              <el-menu-item index="4">
+                <router-link to="lookdata">看数据 </router-link>
+              </el-menu-item>-->
 
-            <el-menu-item index="4">
-              <router-link to="lookdata">看数据 </router-link>
-            </el-menu-item>
-          </el-menu>
-        </div></el-col
-      >
-      <el-col :span="6"
+      <el-col :span="8"
         ><div class="grid-content bg-purple">
           <div class="headRight">
             <span class="el-icon-s-custom"></span>
@@ -81,8 +104,49 @@
 export default {
   data() {
     return {
-      activeIndex: "1",
       activeIndex2: "1",
+      navData: [
+        {
+          key: "1",
+          label: "首页",
+          url: "/homepage",
+        },
+        {
+          key: "2",
+          label: "录数据",
+          url: "/adddata",
+          children: [
+            { key: "2-1", label: "数据报送", url: "/adddata" },
+            { key: "2-2", label: "资源注册", url: "/adddata" },
+            { key: "2-3", label: "系统注册", url: "/adddata" },
+            { key: "2-4", label: "数据需求", url: "/adddata" },
+          ],
+        },
+        {
+          key: "3",
+          label: "用数据",
+          url: "/usedata",
+          children: [
+            { key: "3-1", label: "数据超市", url: "/usedata" },
+            { key: "3-2", label: "标签画像", url: "/usedata" },
+            { key: "3-3", label: "数据检索", url: "/usedata" },
+            { key: "3-4", label: "标签洞察", url: "/usedata" },
+          ],
+        },
+        {
+          key: "4",
+          label: "看数据",
+          url: "/lookdata",
+          children: [
+            { key: "4-1", label: "标准浏览", url: "/lookdata" },
+            { key: "4-2", label: "数据地图", url: "/lookdata" },
+            { key: "4-3", label: "资产报告", url: "/lookdata" },
+            { key: "4-4", label: "质量报告", url: "/lookdata" },
+            { key: "4-5", label: "需求分析", url: "/lookdata" },
+          ],
+        },
+      ],
+      url: ["/adddata", "/homepage", "/lookdata", "/usedata"],
     };
   },
   methods: {
@@ -105,10 +169,12 @@ export default {
 }
 .navMain {
   margin: auto;
+  width: 100%;
+  height: 100%;
 }
-.el-row {
+/* .el-row {
   margin-bottom: 20px;
-}
+} */
 .el-row:last-child {
   margin-bottom: 0;
 }
