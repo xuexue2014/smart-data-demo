@@ -42,47 +42,12 @@
                   <router-link :to="it.url">
                     {{ it.label }}
                   </router-link>
-                </el-menu-item> </el-submenu
-              >
+                </el-menu-item>
+              </el-submenu>
             </el-menu>
           </el-col>
         </el-row>
       </el-col>
-      <!--  <el-menu-item index="2-2"
-                  ><router-link to="/adddata"
-                    >资源注册</router-link
-                  ></el-menu-item
-                >
-                <el-menu-item index="2-3"
-                  ><router-link to="/adddata"
-                    >系统注册</router-link
-                  ></el-menu-item
-                >
-                <el-menu-item index="2-3"
-                  ><router-link to="/adddata"
-                    >数据需求</router-link
-                  ></el-menu-item
-                > -->
-      <!-- <el-submenu index="2-4">
-                  <template slot="title">选项4</template>
-                  <el-menu-item index="2-4-1">选项1</el-menu-item>
-                  <el-menu-item index="2-4-2">选项2</el-menu-item>
-                  <el-menu-item index="2-4-3">选项3</el-menu-item>
-                </el-submenu> -->
-
-      <!--   <el-submenu index="3">
-                <template slot="title">
-                  <router-link to="usedata">用数据 </router-link></template
-                >
-                <el-menu-item index="3-1">数据超市</el-menu-item>
-                <el-menu-item index="3-2">标签画像</el-menu-item>
-                <el-menu-item index="3-2">数据检索</el-menu-item>
-                <el-menu-item index="3-2">标签洞察</el-menu-item>
-              </el-submenu> -->
-      <!-- 
-              <el-menu-item index="4">
-                <router-link to="lookdata">看数据 </router-link>
-              </el-menu-item>-->
 
       <el-col :span="8"
         ><div class="grid-content bg-purple">
@@ -180,6 +145,9 @@ export default {
 }
 .el-menu--horizontal a {
   text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .el-col {
   border-radius: 4px;

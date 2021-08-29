@@ -46,9 +46,9 @@ export default {
 <style>
 .main {
   width: 100%;
-  background: url(../assets/bcimg.jpg) no-repeat;
-  margin-top: -20px;
-  background-size: cover;
+  /* background: url(../assets/bcimg.jpg) no-repeat; */
+  /* margin-top: -20px; */
+  /* background-size: cover; */
 }
 .sumTitle {
   color: #e5e9f2;

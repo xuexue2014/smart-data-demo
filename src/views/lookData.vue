@@ -42,11 +42,12 @@ export default {
 <style scoped>
 .lookData {
   box-sizing: border-box;
-  background: url(../assets/bcimg.jpg) no-repeat;
+  /* background: url(../assets/bcimg.jpg) no-repeat; */
   /* min-height: 600px; */
-  height: 100%;
-  margin-top: -20px;
+  /* height: 100%; */
+  /* margin-top: -20px; */
   display: flex;
+  height: calc(100vh - 120px);
 }
 .box {
   margin: 0 10px;

@@ -18,9 +18,11 @@
         <el-descriptions-item class="empty"></el-descriptions-item>
         <!-- <div labelStyle>11</div> -->
         <el-descriptions-item label="用途分类:">
-          {{ item.usestype }}</el-descriptions-item>
+          {{ item.usestype }}</el-descriptions-item
+        >
         <el-descriptions-item label="有效性状态:">{{
-          item.effectType}}</el-descriptions-item>
+          item.effectType
+        }}</el-descriptions-item>
 
         <el-descriptions-item contentClassName="iconii">
           <span><i class="iconfont"> &#xe604;</i> </span>
@@ -66,13 +68,14 @@ export default {
       /* includes(this.selectedOptions.usestype),
 这个selectedOptions.usestype可以是空的，但是不能不存在，
 因此需要提前给selectedOptions里面设置属性，对应的值为空即可 */
-      return this.tableData.filter((v) => {
+      const filterData = this.tableData.filter((v) => {
         return (
           v.usestype.includes(this.selectedOptions.usestype) &&
           v.reviewstate.includes(this.selectedOptions.approvalState) &&
           v.effectType.includes(this.selectedOptions.effectState)
         );
       });
+      return filterData;
     },
   },
 };
